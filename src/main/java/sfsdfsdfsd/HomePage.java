@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage {
     private WebDriver driver;
 
+
     private final By searchField = By.id("gh-ac");
     private final By searchButton = By.id("gh-btn");
 

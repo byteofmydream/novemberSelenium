@@ -10,21 +10,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class OurFirstSeleniumTest {
     private FirefoxDriver driver;
     private HomePage homePage;
+    private SearchResultPage searchResultPage;
 
     @Before
     public void precondition(){
         driver = new FirefoxDriver();
         homePage = new HomePage(driver);
+        searchResultPage = new SearchResultPage(driver);
     }
 
     @Test
     public void ourFirstTest() throws InterruptedException {
         homePage.openHomePage()
-        .enterSearchText("lightsaber")
-        .clickSearchButton();
+                .enterSearchText("lightsaber")
+                .clickSearchButton();
+        searchResultPage.switchToBuyItNow()
+                .openSomeItem();
 
-        driver.findElement(By.cssSelector("[title=\"Buy It Now\"]")).click();
-        driver.findElement(By.cssSelector("h3.lvtitle>a")).click();
+
         //buy it now
         driver.findElement(By.id("binBtn_btn")).click();
         //assert login
