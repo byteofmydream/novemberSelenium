@@ -11,16 +11,18 @@ public class OurFirstSeleniumTest {
     private FirefoxDriver driver;
     private HomePage homePage;
     private SearchResultPage searchResultPage;
+    private LoginPage loginPage;
 
     @Before
     public void precondition(){
         driver = new FirefoxDriver();
         homePage = new HomePage(driver);
         searchResultPage = new SearchResultPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
-    public void ourFirstTest() throws InterruptedException {
+    public void ourFirstTest() {
         homePage.openHomePage()
                 .enterSearchText("lightsaber")
                 .clickSearchButton();
@@ -31,7 +33,7 @@ public class OurFirstSeleniumTest {
         //buy it now
         driver.findElement(By.id("binBtn_btn")).click();
         //assert login
-        Assert.assertTrue(driver.findElement(By.id("sgnBt")).isDisplayed());
+        Assert.assertTrue(loginPage.isLoginButtonVisible());
     }
 
     @After

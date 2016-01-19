@@ -1,14 +1,18 @@
 package sfsdfsdfsd;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-    private WebDriver driver;
+public class HomePage extends AbstractPO{
 
 
     private final By searchField = By.id("gh-ac");
     private final By searchButton = By.id("gh-btn");
+
+    public HomePage(WebDriver driver){
+        super(driver);
+    }
 
     public HomePage enterSearchText(String text){
         driver.findElement(searchField).sendKeys(text);
@@ -21,12 +25,12 @@ public class HomePage {
     }
 
     public HomePage openHomePage(){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("");
         driver.get("http://www.ebay.com");
+
         return this;
     }
 
-    public HomePage(WebDriver driver){
-        this.driver = driver;
-    }
 
 }
